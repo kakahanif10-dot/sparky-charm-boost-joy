@@ -14,6 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
+      code_libraries: {
+        Row: {
+          created_at: string
+          id: string
+          keywords: string[]
+          mock_assets: Json
+          name: string
+          niche: string
+          platforms: string[]
+          slug: string
+          template_code: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          keywords?: string[]
+          mock_assets?: Json
+          name: string
+          niche: string
+          platforms?: string[]
+          slug: string
+          template_code: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          keywords?: string[]
+          mock_assets?: Json
+          name?: string
+          niche?: string
+          platforms?: string[]
+          slug?: string
+          template_code?: string
+        }
+        Relationships: []
+      }
+      higgsfield_tasks: {
+        Row: {
+          created_at: string
+          error: string | null
+          external_id: string | null
+          id: string
+          model: string | null
+          prompt: string
+          result_url: string | null
+          status: string
+          task_type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          error?: string | null
+          external_id?: string | null
+          id?: string
+          model?: string | null
+          prompt: string
+          result_url?: string | null
+          status?: string
+          task_type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          error?: string | null
+          external_id?: string | null
+          id?: string
+          model?: string | null
+          prompt?: string
+          result_url?: string | null
+          status?: string
+          task_type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
