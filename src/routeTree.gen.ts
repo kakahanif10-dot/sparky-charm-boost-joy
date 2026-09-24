@@ -16,6 +16,7 @@ import { Route as AuthenticatedWorkspaceRouteImport } from './routes/_authentica
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiGenerateRouteImport } from './routes/api/generate'
 import { Route as ApiImageRouteImport } from './routes/api/image'
+import { Route as ApiPublicHiggsfieldWebhookRouteImport } from './routes/api/public/higgsfield-webhook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -51,6 +52,12 @@ const ApiImageRoute = ApiImageRouteImport.update({
   path: '/api/image',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicHiggsfieldWebhookRoute =
+  ApiPublicHiggsfieldWebhookRouteImport.update({
+    id: '/api/public/higgsfield-webhook',
+    path: '/api/public/higgsfield-webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/api/chat': typeof ApiChatRoute
   '/api/generate': typeof ApiGenerateRoute
   '/api/image': typeof ApiImageRoute
+  '/api/public/higgsfield-webhook': typeof ApiPublicHiggsfieldWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -67,6 +75,7 @@ export interface FileRoutesByTo {
   '/api/chat': typeof ApiChatRoute
   '/api/generate': typeof ApiGenerateRoute
   '/api/image': typeof ApiImageRoute
+  '/api/public/higgsfield-webhook': typeof ApiPublicHiggsfieldWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,14 +86,27 @@ export interface FileRoutesById {
   '/api/chat': typeof ApiChatRoute
   '/api/generate': typeof ApiGenerateRoute
   '/api/image': typeof ApiImageRoute
+  '/api/public/higgsfield-webhook': typeof ApiPublicHiggsfieldWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/login' | '/workspace' | '/api/chat' | '/api/generate' | '/api/image'
+    | '/'
+    | '/login'
+    | '/workspace'
+    | '/api/chat'
+    | '/api/generate'
+    | '/api/image'
+    | '/api/public/higgsfield-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/login' | '/workspace' | '/api/chat' | '/api/generate' | '/api/image'
+    | '/'
+    | '/login'
+    | '/workspace'
+    | '/api/chat'
+    | '/api/generate'
+    | '/api/image'
+    | '/api/public/higgsfield-webhook'
   id:
     | '__root__'
     | '/'
@@ -94,6 +116,7 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/api/generate'
     | '/api/image'
+    | '/api/public/higgsfield-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -103,6 +126,7 @@ export interface RootRouteChildren {
   ApiChatRoute: typeof ApiChatRoute
   ApiGenerateRoute: typeof ApiGenerateRoute
   ApiImageRoute: typeof ApiImageRoute
+  ApiPublicHiggsfieldWebhookRoute: typeof ApiPublicHiggsfieldWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -156,6 +180,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiImageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/higgsfield-webhook': {
+      id: '/api/public/higgsfield-webhook'
+      path: '/api/public/higgsfield-webhook'
+      fullPath: '/api/public/higgsfield-webhook'
+      preLoaderRoute: typeof ApiPublicHiggsfieldWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -177,6 +208,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiChatRoute: ApiChatRoute,
   ApiGenerateRoute: ApiGenerateRoute,
   ApiImageRoute: ApiImageRoute,
+  ApiPublicHiggsfieldWebhookRoute: ApiPublicHiggsfieldWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
